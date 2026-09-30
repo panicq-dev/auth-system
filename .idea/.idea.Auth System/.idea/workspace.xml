@@ -14,22 +14,7 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d69420d7-743c-4919-8180-098b7191ad2c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/Auth System.csproj.nuget.dgspec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/Auth System.csproj.nuget.g.props" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/Auth System.csproj.nuget.g.targets" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/Debug/net10.0/.NETCoreApp,Version=v10.0.AssemblyAttributes.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/Debug/net10.0/Auth System.AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/Debug/net10.0/Auth System.AssemblyInfoInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/Debug/net10.0/Auth System.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/Debug/net10.0/Auth System.GlobalUsings.g.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/Debug/net10.0/Auth System.assets.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/Debug/net10.0/Auth System.csproj.AssemblyReference.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/project.assets.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/project.nuget.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/project.packagespec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth System/obj/rider.project.restore.info" beforeDir="false" />
-    </list>
+    <list default="true" id="d69420d7-743c-4919-8180-098b7191ad2c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,8 +26,13 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/33826c675ddea673799e89a3e7c0693a4d35caa976e5fcaef57f1526a8467ee/ConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Auth System/Controllers/UserController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Auth System/Data/Dto/UserLoginDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Auth System/Data/Dto/UserResponseDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Auth System/Data/UserDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Auth System/Models/AuthenticationService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Auth System/Models/User.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Auth System/Services/AuthService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Auth System/Services/TokenService.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -50,62 +40,65 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000002178358496" />
-      <entry key="MS500" value="1.076095801111394" />
-      <entry key="S2" value="2.843954955807593" />
-      <entry key="S5" value="6.585110324251294" />
-      <entry key="S10" value="12.086438374013152" />
-      <entry key="S30" value="27.940789442738442" />
-      <entry key="S60" value="46.53772627275805" />
-      <entry key="M2" value="71.9515075602812" />
-      <entry key="M5" value="108.91207845976442" />
-      <entry key="M10" value="157.67178562453674" />
-      <entry key="M15" value="198.29299636178183" />
-      <entry key="M30" value="270.69456745437174" />
-      <entry key="H1" value="327.0610909269525" />
-      <entry key="H2" value="362.51936947200693" />
-      <entry key="H4" value="382.4435629299006" />
-      <entry key="D1" value="400.28809242750805" />
-      <entry key="W1" value="403.4667300434121" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000002488879998" />
+      <entry key="S2" value="1.0226562164820145" />
+      <entry key="S5" value="1.2821228889822267" />
+      <entry key="S10" value="1.9411958453012192" />
+      <entry key="S30" value="5.866911089889531" />
+      <entry key="S60" value="12.98313667768231" />
+      <entry key="M2" value="27.203971666124588" />
+      <entry key="M5" value="75.78950928497235" />
+      <entry key="M10" value="156.12117884901113" />
+      <entry key="M15" value="228.12355685642692" />
+      <entry key="M30" value="392.1098307428911" />
+      <entry key="H1" value="565.7754845929295" />
+      <entry key="H2" value="700.6395332960471" />
+      <entry key="H4" value="786.1205450419111" />
+      <entry key="D1" value="868.988232863869" />
+      <entry key="W1" value="884.3956799066007" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.5724350117194792E-142" />
-      <entry key="S5" value="2.3280639350628878E-57" />
-      <entry key="S10" value="7.239610859617878E-29" />
-      <entry key="S30" value="9.519517124776102E-10" />
-      <entry key="S60" value="6.096785815394705E-5" />
-      <entry key="M2" value="0.0158623759453188" />
-      <entry key="M5" value="0.4736747987541635" />
-      <entry key="M10" value="1.516490463441054" />
-      <entry key="M15" value="2.248525758508059" />
-      <entry key="M30" value="3.346149140935645" />
-      <entry key="H1" value="4.088118155807515" />
-      <entry key="H2" value="4.520501779248005" />
-      <entry key="H4" value="4.7540430884530425" />
-      <entry key="D1" value="4.9581164989899165" />
-      <entry key="W1" value="4.993994448356637" />
+      <entry key="MS500" value="6.466321080181023E-265" />
+      <entry key="S2" value="8.967354037300167E-67" />
+      <entry key="S5" value="3.811237887320535E-27" />
+      <entry key="S10" value="6.17899371022259E-14" />
+      <entry key="S30" value="4.439963106205761E-5" />
+      <entry key="S60" value="0.00990662082257255" />
+      <entry key="M2" value="0.2161875223179044" />
+      <entry key="M5" value="2.476917774423369" />
+      <entry key="M10" value="8.350623373693706" />
+      <entry key="M15" value="13.939204588131432" />
+      <entry key="M30" value="25.143981256378925" />
+      <entry key="H1" value="34.976513471768335" />
+      <entry key="H2" value="41.66813740284321" />
+      <entry key="H4" value="45.601937018169494" />
+      <entry key="D1" value="49.2321138317162" />
+      <entry key="W1" value="49.88941096796839" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9862329193202738" />
-      <entry key="MS500" value="1.073083169423194" />
-      <entry key="S2" value="2.8379661330626957" />
-      <entry key="S5" value="6.565685124145212" />
-      <entry key="S10" value="12.061181494943611" />
-      <entry key="S30" value="27.914649515984305" />
-      <entry key="S60" value="46.51624241456327" />
-      <entry key="M2" value="71.95184698068617" />
-      <entry key="M5" value="109.37117198912927" />
-      <entry key="M10" value="159.171121513682" />
-      <entry key="M15" value="200.52492430593276" />
-      <entry key="M30" value="274.0282075577639" />
-      <entry key="H1" value="331.1414315569792" />
-      <entry key="H2" value="367.035521971401" />
-      <entry key="H4" value="387.1953045840782" />
-      <entry key="D1" value="405.2458066632139" />
-      <entry key="W1" value="408.4606665531047" />
+      <entry key="MS100" value="0.008431470597690834" />
+      <entry key="MS500" value="0.38475184291991255" />
+      <entry key="S2" value="0.8018072713611484" />
+      <entry key="S5" value="1.1497206416227037" />
+      <entry key="S10" value="1.836856302175746" />
+      <entry key="S30" value="5.777890394258325" />
+      <entry key="S60" value="12.90807367064629" />
+      <entry key="M2" value="27.331253686736076" />
+      <entry key="M5" value="78.1355048046993" />
+      <entry key="M10" value="164.32102611172778" />
+      <entry key="M15" value="241.91826508322706" />
+      <entry key="M30" value="417.14268495486084" />
+      <entry key="H1" value="600.6805798646587" />
+      <entry key="H2" value="742.2667070885087" />
+      <entry key="H4" value="831.7004701317671" />
+      <entry key="D1" value="918.2164436853085" />
+      <entry key="W1" value="934.284527250259" />
     </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 4,
@@ -132,6 +125,11 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "C#"
+    ]
   }
 }]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Auth System: http">

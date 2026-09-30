@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "fDCJBX/8nrg=",
+  "dgSpecHash": "NacPZnApx7Q=",
   "success": true,
   "projectFilePath": "/home/gabriel/RiderProjects/Auth System/Auth System/Auth System.csproj",
   "expectedPackageFiles": [
+    "/home/gabriel/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
+    "/home/gabriel/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/10.0.12/microsoft.aspnetcore.authentication.jwtbearer.10.0.12.nupkg.sha512",
     "/home/gabriel/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/10.0.12/microsoft.aspnetcore.identity.entityframeworkcore.10.0.12.nupkg.sha512",
     "/home/gabriel/.nuget/packages/microsoft.aspnetcore.openapi/10.0.12/microsoft.aspnetcore.openapi.10.0.12.nupkg.sha512",
+    "/home/gabriel/.nuget/packages/microsoft.bcl.cryptography/10.0.2/microsoft.bcl.cryptography.10.0.2.nupkg.sha512",
     "/home/gabriel/.nuget/packages/microsoft.data.sqlite.core/10.0.12/microsoft.data.sqlite.core.10.0.12.nupkg.sha512",
     "/home/gabriel/.nuget/packages/microsoft.entityframeworkcore/10.0.12/microsoft.entityframeworkcore.10.0.12.nupkg.sha512",
     "/home/gabriel/.nuget/packages/microsoft.entityframeworkcore.abstractions/10.0.12/microsoft.entityframeworkcore.abstractions.10.0.12.nupkg.sha512",
@@ -14,11 +17,31 @@
     "/home/gabriel/.nuget/packages/microsoft.entityframeworkcore.sqlite/10.0.12/microsoft.entityframeworkcore.sqlite.10.0.12.nupkg.sha512",
     "/home/gabriel/.nuget/packages/microsoft.entityframeworkcore.sqlite.core/10.0.12/microsoft.entityframeworkcore.sqlite.core.10.0.12.nupkg.sha512",
     "/home/gabriel/.nuget/packages/microsoft.extensions.dependencymodel/10.0.12/microsoft.extensions.dependencymodel.10.0.12.nupkg.sha512",
+    "/home/gabriel/.nuget/packages/microsoft.identitymodel.abstractions/8.23.0/microsoft.identitymodel.abstractions.8.23.0.nupkg.sha512",
+    "/home/gabriel/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.23.0/microsoft.identitymodel.jsonwebtokens.8.23.0.nupkg.sha512",
+    "/home/gabriel/.nuget/packages/microsoft.identitymodel.logging/8.23.0/microsoft.identitymodel.logging.8.23.0.nupkg.sha512",
+    "/home/gabriel/.nuget/packages/microsoft.identitymodel.protocols/8.19.2/microsoft.identitymodel.protocols.8.19.2.nupkg.sha512",
+    "/home/gabriel/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/8.19.2/microsoft.identitymodel.protocols.openidconnect.8.19.2.nupkg.sha512",
+    "/home/gabriel/.nuget/packages/microsoft.identitymodel.tokens/8.23.0/microsoft.identitymodel.tokens.8.23.0.nupkg.sha512",
     "/home/gabriel/.nuget/packages/microsoft.openapi/2.12.0/microsoft.openapi.2.12.0.nupkg.sha512",
     "/home/gabriel/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.1.12/sqlitepclraw.bundle_e_sqlite3.2.1.12.nupkg.sha512",
     "/home/gabriel/.nuget/packages/sqlitepclraw.core/2.1.12/sqlitepclraw.core.2.1.12.nupkg.sha512",
     "/home/gabriel/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.1.12/sqlitepclraw.lib.e_sqlite3.2.1.12.nupkg.sha512",
-    "/home/gabriel/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.12/sqlitepclraw.provider.e_sqlite3.2.1.12.nupkg.sha512"
+    "/home/gabriel/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.12/sqlitepclraw.provider.e_sqlite3.2.1.12.nupkg.sha512",
+    "/home/gabriel/.nuget/packages/system.identitymodel.tokens.jwt/8.23.0/system.identitymodel.tokens.jwt.8.23.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'AutoMapper' 13.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "projectPath": "/home/gabriel/RiderProjects/Auth System/Auth System/Auth System.csproj",
+      "warningLevel": 1,
+      "filePath": "/home/gabriel/RiderProjects/Auth System/Auth System/Auth System.csproj",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
 }
