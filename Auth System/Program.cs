@@ -1,12 +1,23 @@
 using System.Text;
 using Auth_System.Data;
 using Auth_System.Models;
+using Auth_System.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
+// Database Connection
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddOpenApi();
+builder.Services.AddDbContext<UserDbContext>(options => 
+    options.UseSqlite(connectionString)
+);
+builder.Services.AddControllers();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<TokenService>();
 
 // Identity Configuration
 builder.Services.AddIdentity<User, IdentityRole>()
@@ -32,12 +43,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// Database Connection
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddOpenApi();
-builder.Services.AddDbContext<UserDbContext>(options => 
-    options.UseSqlite(connectionString)
-    );
+
 
 var app = builder.Build();
 
@@ -48,5 +54,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.MapControllers();
 
 app.Run();
