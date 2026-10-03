@@ -1,9 +1,13 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
+using Auth_System.Data;
 using Auth_System.Data.Dto;
 using Auth_System.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Auth_System.Services;
@@ -11,17 +15,15 @@ namespace Auth_System.Services;
 public class TokenService
 {
     private readonly IConfiguration _configuration;
-    private readonly IMapper _mapper;
-    public TokenService(IConfiguration configuration, IMapper mapper)
+
+    public TokenService(IConfiguration configuration)
     {
         _configuration = configuration;
-        _mapper = mapper;
     }
 
-    public string CreateToken(UserLoginDto dto)
+    public string CreateToken(User user)
     {
-        var user = _mapper.Map<User>(dto);
-
+        
         Claim[] claims = new[]
         {
             new Claim(ClaimTypes.Name, user.UserName),
@@ -38,4 +40,48 @@ public class TokenService
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
+
+    public string CreateRefreshToken()
+    {
+        var bytes = new byte[128];
+        using var randomNumber = RandomNumberGenerator.Create();
+        randomNumber.GetBytes(bytes);
+        var refreshToken = Convert.ToBase64String(bytes);
+        return refreshToken;
+    }
+
+    public string HashRefreshToken(string refreshToken)
+    {
+        var bytes = Encoding.UTF8.GetBytes(refreshToken);
+        var hash = SHA256.HashData(bytes);
+        return Convert.ToBase64String(hash);
+    }
+    public DateTime GetRefreshTokenExpiration()
+    {
+        var minutes = _configuration.GetValue<int>("JWTTokenConfiguration:RefreshExpireInMinutes");
+        if (minutes <= 0)
+        {
+            throw new InvalidOperationException("JWTTokenConfiguration:RefreshExpireInMinutes deve ser maior que zero.");
+        }
+        return DateTime.UtcNow.AddMinutes(minutes);
+    }
+    public AuthInfo GenerateTokenPair(User user)
+    {
+        // Gerando AcessToken e RefreshToken.
+        var token = CreateToken(user);
+        var refreshToken = CreateRefreshToken();
+        var refreshTokenHash = HashRefreshToken(refreshToken);
+        var refreshTokenExpirationTime = GetRefreshTokenExpiration();
+        // Retornando todas as informações para o AuthService Login.
+        return new AuthInfo()
+        {
+            AcessToken= token,
+            RefreshToken = refreshToken,
+            RefreshTokenHash =  refreshTokenHash,
+            ExpiresAt = refreshTokenExpirationTime
+        };
+    }
+
+    
 }
+

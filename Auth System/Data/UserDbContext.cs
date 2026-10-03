@@ -10,4 +10,20 @@ public class UserDbContext : IdentityDbContext<User>
     {
         
     }
+
+    public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        
+        modelBuilder.Entity<RefreshToken>()
+            .HasIndex(token => token.RefreshTokenHash)
+            .IsUnique();
+        
+        modelBuilder.Entity<RefreshToken>()
+            .HasOne(token => token.User)
+            .WithMany()
+            .HasForeignKey(token => token.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+    }
 }
