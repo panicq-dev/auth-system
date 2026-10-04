@@ -23,16 +23,24 @@ public class AuthService
         _dbContext = dbContext;
     }
 
-    public async Task<string> Register(UserRegisterDto dto)
+    public async Task<IdentityResult> Register(UserRegisterDto dto)
     {
 
         var user = _mapper.Map<User>(dto);
         var createUser = await _signInManager.UserManager.CreateAsync(user, dto.Password);
         if (!createUser.Succeeded)
         {
-            return "[ERROR] User not created";
+            return createUser;
         }
-        return "[SUCCESS] User created";
+
+        var addRole = await _signInManager.UserManager.AddToRoleAsync(user, "User");
+        if (!addRole.Succeeded)
+        {
+            await _signInManager.UserManager.DeleteAsync(user);
+            return addRole;
+        }
+
+        return IdentityResult.Success;
     }
 
 
@@ -51,7 +59,7 @@ public class AuthService
            return null;
        }
        // Geração de RefreshToken e Token + criação de um objeto RefreshToken.
-       var tokens = _tokenService.GenerateTokenPair(user);
+       var tokens = await _tokenService.GenerateTokenPair(user);
         _dbContext.RefreshTokens.Add(new RefreshToken()
         {
             UserId = user.Id,

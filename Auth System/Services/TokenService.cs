@@ -15,19 +15,22 @@ namespace Auth_System.Services;
 public class TokenService
 {
     private readonly IConfiguration _configuration;
+    private readonly UserManager<User> _userManager;
 
-    public TokenService(IConfiguration configuration)
+    public TokenService(IConfiguration configuration, UserManager<User> userManager)
     {
         _configuration = configuration;
+        _userManager = userManager;
     }
 
-    public string CreateToken(User user)
+    public string CreateToken(User user, IEnumerable<string> roles)
     {
         
-        Claim[] claims = new[]
+        var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.UserName),
+            new(ClaimTypes.Name, user.UserName!),
         };
+        claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWTKey:key"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
         var token = new JwtSecurityToken(
@@ -65,10 +68,11 @@ public class TokenService
         }
         return DateTime.UtcNow.AddMinutes(minutes);
     }
-    public AuthInfo GenerateTokenPair(User user)
+    public async Task<AuthInfo> GenerateTokenPair(User user)
     {
+        var roles = await _userManager.GetRolesAsync(user);
         // Gerando AcessToken e RefreshToken.
-        var token = CreateToken(user);
+        var token = CreateToken(user, roles);
         var refreshToken = CreateRefreshToken();
         var refreshTokenHash = HashRefreshToken(refreshToken);
         var refreshTokenExpirationTime = GetRefreshTokenExpiration();
@@ -84,4 +88,3 @@ public class TokenService
 
     
 }
-

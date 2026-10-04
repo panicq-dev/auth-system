@@ -27,7 +27,12 @@ public class UserController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Register([FromBody] UserRegisterDto dto)
     {
-        await _authService.Register(dto);
+        var result = await _authService.Register(dto);
+        if (!result.Succeeded)
+        {
+            return BadRequest(result.Errors.Select(error => error.Description));
+        }
+
         return Ok("User created");
     }
     
@@ -49,6 +54,13 @@ public class UserController : ControllerBase
     public string ProtectedRouteTest()
     {
         return "You're authenticated!";
+    }
+
+    [Authorize(Roles = "Admin")]
+    [HttpGet("admin")]
+    public string AdminRouteTest()
+    {
+        return "You're an administrator!";
     }
 
     [HttpPost("refresh")]
@@ -74,7 +86,7 @@ public class UserController : ControllerBase
         // Agora, se passou pelas validações anteriores, iremos INVALIDAR o RefreshToken passado e gerar um novo Access e RefreshToken.
         
         storedRefreshToken.RevokeAt = now;
-        var tokenPair = _tokenService.GenerateTokenPair(storedRefreshToken.User);
+        var tokenPair = await _tokenService.GenerateTokenPair(storedRefreshToken.User);
         // Iremos criar um novo RefreshToken associado ao usuário & salvar no banco de dados.
         var newRefreshToken = new RefreshToken()
         {
